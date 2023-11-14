@@ -125,6 +125,7 @@ char *convert_number(long int num, int base, int flags)
  *
  * Return: Always 0
  */
+
 void remove_comment(char *buf)
 {
 	int i;
@@ -134,8 +135,7 @@ void remove_comment(char *buf)
 		if (buf[i] == '#' && (!i || buf[i - 1] == ' '))
 		{
 			buf[i] = '\0';
-				break;
+			break;
 		}
 	}
 }
-

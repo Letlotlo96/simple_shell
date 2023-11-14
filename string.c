@@ -1,8 +1,8 @@
 #include "shell.h"
 
 /**
- * _strelen - returns the length of the string
- * @s: the string whose length to check 
+ * _strlen - returns the length of the string
+ * @s: the string whose length to check
  *
  * Return: integer length of string
  */
@@ -25,7 +25,7 @@ int _strlen(char *s)
  *
  * Return: negative if s1 < s2, positive if s1 > s2, zero if s1 == s2
  */
-int _strcmp(char *s1, char *2)
+int _strcmp(char *s1, char *s2)
 {
 	while (*s1 && *s2)
 	{
@@ -36,18 +36,18 @@ int _strcmp(char *s1, char *2)
 	}
 	if (*s1 == *s2)
 		return (0);
-	else 
-		return (*s1 < *s2 ? -1: 1);
+	else
+		return (*s1 < *s2 ? -1 : 1);
 }
 
 /**
  * starts_with - checks if needle starts with haystack
- * @haystack:
- * @needle the substring to find
+ * @haystack: string to search
+ * @needle: the substring to find
  *
  * Return: address of the next char of haystack or NULL
  */
-char *starts_with(const char *haystack, const char *needle) 
+char *starts_with(const char *haystack, const char *needle)
 {
 	while (*needle)
 		if (*needle++ != *haystack++)
@@ -56,7 +56,7 @@ char *starts_with(const char *haystack, const char *needle)
 }
 
 /**
- * _strcat - concatenates two strings 
+ * _strcat - concatenates two strings
  * @dest: the destination buffer
  * @src: the source buffer
  *
