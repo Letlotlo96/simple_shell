@@ -8,7 +8,6 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <sys/stat.h>
-#include <limit.h>
 #include <fcntl.h>
 #include <errno.h>
 
