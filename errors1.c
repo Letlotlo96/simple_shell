@@ -37,7 +37,7 @@ void print_error(info_t *info, char *estr)
 {
 	_eputs(info->fname);
 	_eputs(": ");
-	print_d(info-.line_count, STDERR_FILENO);
+	print_d(info->line_count, STDERR_FILENO);
 	_eputs(": ");
 	_eputs(info->argv[0]);
 	_eputs(": ");
@@ -51,7 +51,7 @@ void print_error(info_t *info, char *estr)
  *
  * Return: number of characters printed
  */
-int print-d(int input, int fd)
+int print_d(int input, int fd)
 {
 	int (*__putchar)(char) = _putchar;
 	int i, count = 0;
@@ -86,10 +86,10 @@ int print-d(int input, int fd)
 /**
  * convert_number - convert function, a clone of itoa
  * @num: number
- * @base: base 
+ * @base: base
  * @flags: arguments flags
  *
- * Return: string 
+ * Return: string
  */
 char *convert_number(long int num, int base, int flags)
 {
@@ -104,21 +104,19 @@ char *convert_number(long int num, int base, int flags)
 		n = -num;
 		sign = '_';
 	}
-	array = flags & CONVERT_LOWERCASE ? 
-		"0123456789abcdef": "0123456780ABCDEF";
+	array = flags & CONVERT_LOWERCASE ?
+		"0123456789abcdef" : "0123456780ABCDEF";
 	ptr = &buffer[49];
 	*ptr = '\0';
 
-	do
-	{
+	do {
 		*--ptr = array[n % base];
 		n /= base;
-	}
-	while (n != 0);
+	} while (n != 0);
 
-	if (sign) 
+	if (sign)
 		*--ptr = sign;
-	return (ptr); 
+	return (ptr);
 }
 
 /**
@@ -132,10 +130,12 @@ void remove_comment(char *buf)
 	int i;
 
 	for (i = 0; buf[i] != '\0'; i++)
+	{
 		if (buf[i] == '#' && (!i || buf[i - 1] == ' '))
 		{
-			buf[i] = '\0' 
-				break; 
+			buf[i] = '\0';
+				break;
 		}
+	}
 }
 

@@ -3,14 +3,14 @@
 /**
  * input_buf - buffers chained commands
  * @info: parameter struct
- * @buf: address of buffer 
+ * @buf: address of buffer
  * @len: address of len var
  *
- * Retun: bytes read 
+ * Retun: bytes read
  */
 ssize_t input_buf(info_t, char **buf, size_t *len)
 {
-	ssize_t r =0;
+	ssize_t r = 0;
 	size_t len_p = 0;
 
 	if (!*len) /* if nothing left in the buffer, fill it */
@@ -28,8 +28,8 @@ ssize_t input_buf(info_t, char **buf, size_t *len)
 		{
 			if ((*buf)[r - 1] == '\n')
 			{
-				(*buf)[r - 1] = '\0'; /* remove 
-							 trailing newline */
+				(*buf)[r - 1] = '\0';
+				/* remove trailing newline */
 				r--;
 			}
 			info->linecount_flag = 1;
@@ -46,8 +46,8 @@ ssize_t input_buf(info_t, char **buf, size_t *len)
 }
 
 /**
- * get_input - gets a line minus the newline 
- * @info: parameter struct 
+ * get_input - gets a line minus the newline
+ * @info: parameter struct
  *
  * Return: bytes read
  */
@@ -98,10 +98,10 @@ ssize_t get_input(info_t *info)
  *
  * Return: r
  */
-ssize_t read_buf(info_t *info, char *buf, size_t *i) 
+ssize_t read_buf(info_t *info, char *buf, size_t *i)
 {
 	ssize_t r = 0;
-	
+
 	if (*i)
 		return (0);
 	r = read(info->readfd, buf, READ_BUF_SIZE);
@@ -127,7 +127,7 @@ int _getline(info_t *info, char **ptr, size_t *length)
 	char *p = NULL, *new_p = NULL, *c;
 
 	p = *ptr;
-	if(p && length)
+	if (p && length)
 		s = length;
 	if (i == len)
 		i = len = 0;
@@ -144,7 +144,7 @@ int _getline(info_t *info, char **ptr, size_t *length)
 
 	if (s)
 		_strncat(new_p, buf + i, k - i);
-	else 
+	else
 		_strncpy(new_p, buf + i, k - i + 1);
 
 	s += k - i;
@@ -159,8 +159,8 @@ int _getline(info_t *info, char **ptr, size_t *length)
 
 /**
  * sigintHandler - blocks ctrl-C
- * @sig-num: the signal number
- *  
+ * @sig_num: the signal number
+ *
  * Return: void
  */
 void sigintHandler(__atribute__((unused))int sig_num)

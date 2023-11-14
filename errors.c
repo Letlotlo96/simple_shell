@@ -9,6 +9,7 @@
 void _eputs(char *str)
 {
 	int i = 0;
+
 	if (!str)
 		return;
 	while (str[i] != '\0')
@@ -27,7 +28,7 @@ void _eputs(char *str)
 int _eputchar(char c)
 {
 	static int i;
-	static char buf (WRITE_BUF_SIZE);
+	static char buf[WRITE_BUF_SIZE];
 
 	if (c == BUF_FLUSH || i >= WRITE BUFF SIZE)
 	{

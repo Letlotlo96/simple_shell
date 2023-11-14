@@ -14,7 +14,7 @@ void clear_info(info_t *info)
 
 /**
  * set_info - initialize info_t struct
- * @info: struct address 
+ * @info: struct address
  * @av: argument vector
  */
 void set_info(info_t *info, char **av)
@@ -24,19 +24,19 @@ void set_info(info_t *info, char **av)
 	info->fname = av[0];
 	if (info->arg)
 	{
-		info->argv = strtow(info->arg,"\t");
+		info->argv = strtow(info->arg, "\t");
 		if (!info->argv)
 		{
 			info->argv = malloc(sizeof(char *) * 2);
-			if (info->argv) 
+			if (info->argv)
 			{
 			info->argv[0] = _strdup(info->arg);
 			info->argv[1] = NULL;
 			}
 		}
-		for (i = 0; info_>argv && info->argv[i]; i++);
+		for (i = 0; info->argv && info->argv[i]; i++)
 		info->argc = 1;
-		
+
 		replace_alias(info);
 		replace_vars(info);
 	}
@@ -61,7 +61,7 @@ void free_info(info_t *info, int all)
 		if (info->history)
 			free_list(&(info->history));
 		if (info->alias)
-			frees_list(&(info->alias)); 
+			frees_list(&(info->alias));
 		ffree(info->environ)
 			info->environ = NULL;
 		bfree((void **)info->cmd_buf);

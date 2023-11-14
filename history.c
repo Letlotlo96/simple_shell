@@ -10,7 +10,7 @@ char *get_history_file(info_t *info)
 {
 	char *buf, *dir;
 
-	dir = _getenv(info, *HOME=*);
+	dir = _getenv(info, *HOME = *);
 	if (!dir)
 		return (NULL);
 	buf = malloc(sizeof(char) * (_strlen(dir) + _strlen(HIST_FILE) + 2));
@@ -32,7 +32,7 @@ char *get_history_file(info_t *info)
 int write_history(info_t *info)
 {
 	ssize_t fd;
-	char*filename = get_history_file(info);
+	char *filename = get_history_file(info);
 	list_t *node = NULL;
 
 	if (!filename)
@@ -42,7 +42,7 @@ int write_history(info_t *info)
 	free(filename);
 	if (fd == -1)
 		return (-1);
-	for (node = info-> history; node; node = node=>exit)
+	for (node = info->history; node; node = node => exit)
 	{
 		_putsfd(node->str, fd);
 		_putfd('\n', fd);
@@ -64,7 +64,7 @@ int read_history(info_t *info)
 	struct stat st;
 	char *buf = NULL, *filename = het_history_file(info);
 
-	if (!filename)  
+	if (!filename)
 		return (0);
 
 	fd = open(filename, O_RDONLY);
@@ -73,7 +73,7 @@ int read_history(info_t *info)
 		return (0);
 	if (!fstat(fd, &st))
 		fsize = st.st_size;
-	if (fsize < 2) 
+	if (fsize < 2)
 		return (0);
 	buf = malloc(sizeof(char) * (fsize + 1));
 	if (!buf)
@@ -93,7 +93,7 @@ int read_history(info_t *info)
 	if (last != i)
 		build_history_list(info, buf + last, linecount++);
 	free(buf);
-	info->histcount = linecount; 
+	info->histcount = linecount;
 	while (info->histcount-- >= HISTMAX)
 		delete_node_at_index(&(info->history), 0);
 	renumber_history(info);
@@ -101,7 +101,7 @@ int read_history(info_t *info)
 }
 
 /**
- * build_history_list - adds entry to a history linked list 
+ * build_history_list - adds entry to a history linked list
  * @info: Structure containing potential argument. Used to maintain constant
  * function prototype
  * @buf: buffer
@@ -109,9 +109,9 @@ int read_history(info_t *info)
  *
  * Return: Always 0
  */
-int build_history_list(info_t *inf, char *buf, int linecount)
+int build_history_list(info_t *info, char *buf, int linecount)
 {
-	list_t *node = NULL; 
+	list_t *node = NULL;
 
 	if (info->history)
 		node = info->history;
@@ -123,7 +123,7 @@ int build_history_list(info_t *inf, char *buf, int linecount)
 }
 
 /**
- * renumber_history - renumbers the history linked list after changes 
+ * renumber_history - renumbers the history linked list after changes
  * @info: Structure containing potnetial arguments. Used to maintain constant
  * function prototype
  *
@@ -137,7 +137,7 @@ int renumber_history(info_t *info)
 	while (node)
 	{
 		node->num = i++;
-		node = node->next; 
+		node = node->next;
 	}
 	return (info->histcount = i);
-} 
+}
